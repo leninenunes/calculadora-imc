@@ -57,9 +57,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
         android:backgroundTint="@color/white"
-        android:progressBackgroundTint="@color/white"
-        android:min="0"
         android:max="250"
+        android:min="0"
+        android:progressBackgroundTint="@color/white"
         android:progressTint="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -67,13 +67,24 @@
 
     <TextView
         android:id="@+id/textview_height"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seekbar_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:textColor="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seekbar_height" />
+
+    <TextView
+        android:id="@+id/textview_result"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/button_clear"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/button_clear"
