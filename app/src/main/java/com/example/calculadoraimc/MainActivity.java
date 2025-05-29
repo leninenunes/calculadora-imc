@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,15 +39,21 @@ public class MainActivity extends AppCompatActivity {
         buttonCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String weightText = editTextWeight.getText().toString();
-                double height = (double) seekBarHeight.getProgress() / 100;
+                try{
+                    String weightText = editTextWeight.getText().toString();
+                    double height = (double) seekBarHeight.getProgress() / 100;
 
-                double weight = Double.parseDouble(weightText);
-                double result = weight / (height * height);
-
-                textViewResult.setText(String.format(Locale.getDefault(),"IMC: %.2f", result));
-
-                textViewResult.setVisibility(View.VISIBLE);
+                    if(height == 0){
+                        Toast.makeText(getApplicationContext(), R.string.msg_validation_height, Toast.LENGTH_SHORT).show();
+                    }else{
+                        double weight = Double.parseDouble(weightText);
+                        double result = weight / (height * height);
+                        textViewResult.setText(String.format(Locale.getDefault(),"IMC: %.2f", result));
+                        textViewResult.setVisibility(View.VISIBLE);
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(), R.string.msg_validation_weight, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
