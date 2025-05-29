@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CalculadoraImc</string>
+    <string name="app_name">IMC</string>
 
     <string name="title_imc">Calculadora IMC</string>
     <string name="hint_weight">Peso</string>
