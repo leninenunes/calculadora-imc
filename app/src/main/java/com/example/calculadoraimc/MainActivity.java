@@ -13,6 +13,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -38,10 +40,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String weightText = editTextWeight.getText().toString();
                 double height = (double) seekBarHeight.getProgress() / 100;
+
                 double weight = Double.parseDouble(weightText);
                 double result = weight / (height * height);
 
-                textViewResult.setText("IMC: " + result);
+                textViewResult.setText(String.format(Locale.getDefault(),"IMC: %.2f", result));
+
+                textViewResult.setVisibility(View.VISIBLE);
             }
         });
 
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 textViewHeight.setText(progress + " cm");
+                textViewHeight.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -65,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 editTextWeight.setText("");
                 seekBarHeight.setProgress(0);
+                textViewResult.setText("");
+
+                textViewResult.setVisibility(View.GONE);
+                textViewHeight.setVisibility(View.GONE);
             }
         });
     }
